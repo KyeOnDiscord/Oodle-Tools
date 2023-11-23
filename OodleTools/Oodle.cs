@@ -31,7 +31,7 @@ public class Oodle : Imports
     public static byte[] Compress(byte[] data)
     {
         var compressor = OodleLZ_Compressor.Leviathan;
-        var maxSize = OodleLZ_GetCompressedBufferSizeNeeded(compressor,(uint)data.Length);
+        long maxSize = OodleLZ_GetCompressedBufferSizeNeeded(compressor,data.LongLength);
         var compressedData = new byte[maxSize];
         
         var compressedSize = Compress(data, (uint)data.Length, ref compressedData,
@@ -84,19 +84,19 @@ public class Oodle : Imports
         return decompressedData;
     }
 
-    private static uint Compress(byte[] buffer, uint bufferSize, ref byte[] OutputBuffer, uint OutputBufferSize,
+    private static long Compress(byte[] buffer, long bufferSize, ref byte[] OutputBuffer, long OutputBufferSize,
         OodleLZ_Compressor format, OodleLZ_CompressionLevel level)
     {
         if (buffer.Length > 0 && bufferSize > 0 && OutputBuffer.Length > 0 && OutputBufferSize > 0)
-            return (uint)OodleLZ_Compress(format, buffer, bufferSize, OutputBuffer, level, 0, 0, 0);
+            return OodleLZ_Compress(format, buffer, bufferSize, OutputBuffer, level, 0, 0, 0);
 
         return 0;
     }
 
-    private static uint Decompress(byte[] buffer, uint bufferSize, ref byte[] outputBuffer, uint outputBufferSize)
+    private static long Decompress(byte[] buffer, uint bufferSize, ref byte[] outputBuffer, long outputBufferSize)
     {
         if (buffer.Length > 0 && bufferSize > 0 && outputBuffer.Length > 0 && outputBufferSize > 0)
-            return (uint)OodleLZ_Decompress(buffer, bufferSize, outputBuffer, outputBufferSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return OodleLZ_Decompress(buffer, bufferSize, outputBuffer, outputBufferSize, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
         return 0;
     }

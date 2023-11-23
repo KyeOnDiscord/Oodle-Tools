@@ -53,8 +53,15 @@ public class Imports
 {
     private const string OodlePath = "oo2core_9_win64.dll";
 
+
+    /// <summary>
+    /// Return the size you must malloc the compressed buffer
+    /// </summary>
+    /// <param name="compressor">	compressor used; OodleLZ_Compressor_Invalid to make it enough for any compressor </param>
+    /// <param name="rawSize">uncompressed size you will compress into this buffer </param>
+    /// <returns>Return the size you must malloc the compressed buffer</returns>
     [DllImport(OodlePath, CallingConvention = CallingConvention.Cdecl)]
-    internal static extern uint OodleLZ_GetCompressedBufferSizeNeeded(OodleLZ_Compressor compressor, uint rawSize);
+    internal static extern long OodleLZ_GetCompressedBufferSizeNeeded(OodleLZ_Compressor compressor, long rawSize);
     /// <summary>
     /// 
     /// </summary>
@@ -70,8 +77,8 @@ public class Imports
     /// <param name="scratchSize">(optional) size of scratch memory (see OodleLZ_GetCompressScratchMemBound) </param>
     /// <returns>size of compressed data written, or OODLELZ_FAILED for failure </returns>
     [DllImport(OodlePath, CallingConvention = CallingConvention.Cdecl)]
-    internal static extern int OodleLZ_Compress(OodleLZ_Compressor compressor, byte[] rawBuf, long rawLen, byte[] compBuf, OodleLZ_CompressionLevel level, uint pOptions = 0, uint dictionaryBase = 0, uint lrm = 0, uint scratchMem = 0, uint scratchSize = 0);
+    internal static extern long OodleLZ_Compress(OodleLZ_Compressor compressor, byte[] rawBuf, long rawLen, byte[] compBuf, OodleLZ_CompressionLevel level, uint pOptions = 0, uint dictionaryBase = 0, uint lrm = 0, uint scratchMem = 0, uint scratchSize = 0);
     
     [DllImport(OodlePath, CallingConvention = CallingConvention.Cdecl)]
-    internal static extern int OodleLZ_Decompress(byte[] Buffer, long BufferSize, byte[] OutputBuffer, long OutputBufferSize, uint a, uint b, uint c, uint d, uint e, uint f, uint g, uint h, uint i, int ThreadModule);
+    internal static extern long OodleLZ_Decompress(byte[] Buffer, long BufferSize, byte[] OutputBuffer, long OutputBufferSize, uint a, uint b, uint c, uint d, uint e, uint f, uint g, uint h, uint i, int ThreadModule);
 }
