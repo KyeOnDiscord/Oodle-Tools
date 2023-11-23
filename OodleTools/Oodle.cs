@@ -30,7 +30,7 @@ public class Oodle : Imports
     /// <returns>byte[]: The compressed data</returns>
     public static byte[] Compress(byte[] data)
     {
-        var compressor = OodleLZ_Compressor.Leviathan;
+        var compressor = OodleLZ_Compressor.Kraken;
         long maxSize = OodleLZ_GetCompressedBufferSizeNeeded(compressor,data.LongLength);
         var compressedData = new byte[maxSize];
         
