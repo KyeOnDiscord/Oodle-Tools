@@ -11,5 +11,5 @@ With this repository, you can use Oodle in your own C# projects. This includes C
 Few things to note:
 - If you would like to use this in your own project, please give credit.
 - If you don't know how to make a compressor with it, use a pre-compiled version in the releases tab.
-- This uses Oodle 2.5, if you want it to work on a newer version, either rename the dll to 'oo2core_5_win64.dll' or change the name in the 'Imports.cs' class.
-- I WILL NOT BE PROVIDING AN OODLE DLL DUE TO LEGAL REASONS!!!
+- This uses Oodle 2.9 (and above)
+- Oodle dlls can be found [here](https://github.com/WorkingRobot/OodleUE/tree/main/Engine/Source/Programs/Shared/EpicGames.Oodle/Sdk/2.9.10/win/redist)
